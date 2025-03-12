@@ -177,8 +177,6 @@ def Merge_Data_Time_Entries_BQ(client, tabla_final, tabla_temp):
         ) 
     """
 
-    print(merge_query)
-
     query_job = client.query(merge_query)
     resultados = list(query_job.result())
     filas_actualizadas = query_job.num_dml_affected_rows

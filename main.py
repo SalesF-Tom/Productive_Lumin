@@ -40,7 +40,7 @@ def main(tipo='diario'):
                 fecha = obtener_primer_dia_mes_pasado()
                 print(f"\033[36m Ejecución Mensual \033[0m")
 
-        # fecha = "2024-12-01"
+        fecha = "2024-01-01"
         
         """
         print(f"\033[33m Time Report: \033[0m")
@@ -50,9 +50,10 @@ def main(tipo='diario'):
                 Insertar_Datos_BQ(client, Esquema.schema_time_report, 'tbl_productive_time_reports', time_report, 'temp', 'WRITE_TRUNCATE')
                 Merge_Data_Time_Reports_BQ(
                         client,
-                        'data-warehouse-311917.Productive.tbl_productive_time_reports',
-                        'data-warehouse-311917.zt_productive_temp.tbl_productive_time_reports_temp'
+                        f'{PROJECT_ID}.{DATASET_FINAL}.tbl_productive_time_reports',
+                        f'{PROJECT_ID}.{DATASET_TEMP}.tbl_productive_time_reports_temp'
                 )
+        """
 
         print(f"\033[33m People: \033[0m")
         people = get_people()
@@ -61,8 +62,8 @@ def main(tipo='diario'):
                 Insertar_Datos_BQ(client, Esquema.schema_people, 'tbl_productive_people', people, 'temp', 'WRITE_TRUNCATE')
                 Merge_Data_People_BQ(
                         client,
-                        'data-warehouse-311917.Productive.tbl_productive_people',
-                        'data-warehouse-311917.zt_productive_temp.tbl_productive_people_temp'
+                        f'{PROJECT_ID}.{DATASET_FINAL}.tbl_productive_people',
+                        f'{PROJECT_ID}.{DATASET_TEMP}.tbl_productive_people_temp'
                         )
 
 
@@ -73,8 +74,8 @@ def main(tipo='diario'):
                 Insertar_Datos_BQ(client, Esquema.schema_projects, 'tbl_productive_projects', projects, 'temp', 'WRITE_TRUNCATE')
                 Merge_Data_Projects_BQ(
                         client,
-                        'data-warehouse-311917.Productive.tbl_productive_projects',
-                        'data-warehouse-311917.zt_productive_temp.tbl_productive_projects_temp'
+                        f'{PROJECT_ID}.{DATASET_FINAL}.tbl_productive_projects',
+                        f'{PROJECT_ID}.{DATASET_TEMP}.tbl_productive_projects_temp'
                         )
         
         print(f"\033[33m Services: \033[0m")
@@ -84,10 +85,10 @@ def main(tipo='diario'):
                 Insertar_Datos_BQ(client, Esquema.schema_services, 'tbl_productive_services', services, 'temp', 'WRITE_TRUNCATE')
                 Merge_Data_Services_BQ(
                         client,
-                        'data-warehouse-311917.Productive.tbl_productive_services',
-                        'data-warehouse-311917.zt_productive_temp.tbl_productive_services_temp'
+                        f'{PROJECT_ID}.{DATASET_FINAL}.tbl_productive_services',
+                        f'{PROJECT_ID}.{DATASET_TEMP}.tbl_productive_services_temp'
                         )
-        """
+                
         print(f"\033[33m Time Entries: \033[0m")
         time_entries=get_time_entries(fecha)
         # print(time_entries.head())
@@ -95,11 +96,11 @@ def main(tipo='diario'):
                 Insertar_Datos_BQ(client, Esquema.schema_time_entries, 'tbl_productive_time_entries', time_entries, 'temp', 'WRITE_TRUNCATE')
                 Merge_Data_Time_Entries_BQ(
                         client,
-                        'data-warehouse-311917.Productive.tbl_productive_time_entries',
-                        'data-warehouse-311917.zt_productive_temp.tbl_productive_time_entries_temp'
+                        f'{PROJECT_ID}.{DATASET_FINAL}.tbl_productive_time_entries',
+                        f'{PROJECT_ID}.{DATASET_TEMP}.tbl_productive_time_entries_temp'
                         )
                 
-        """
+        
         print(f"\033[33m Deals: \033[0m")
         deals = get_deals()
         # print(deals.head())
@@ -107,8 +108,8 @@ def main(tipo='diario'):
                 Insertar_Datos_BQ(client, Esquema.schema_deals, 'tbl_productive_deals', deals, 'temp', 'WRITE_TRUNCATE')
                 Merge_Data_Deals_BQ(
                         client,
-                        'data-warehouse-311917.Productive.tbl_productive_deals',
-                        'data-warehouse-311917.zt_productive_temp.tbl_productive_deals_temp'
+                        f'{PROJECT_ID}.{DATASET_FINAL}.tbl_productive_deals',
+                        f'{PROJECT_ID}.{DATASET_TEMP}.tbl_productive_deals_temp'
                         )
         
         print(f"\033[33m Bookings: \033[0m")
@@ -118,8 +119,8 @@ def main(tipo='diario'):
                 Insertar_Datos_BQ(client, Esquema.schema_bookings, 'tbl_productive_bookings', bookings, 'temp', 'WRITE_TRUNCATE')
                 Merge_Data_Bookings_BQ(
                         client,
-                        'data-warehouse-311917.Productive.tbl_productive_bookings',
-                        'data-warehouse-311917.zt_productive_temp.tbl_productive_bookings_temp'
+                        f'{PROJECT_ID}.{DATASET_FINAL}.tbl_productive_bookings',
+                        f'{PROJECT_ID}.{DATASET_TEMP}.tbl_productive_bookings_temp'
                         )
         
         print(f"\033[33m Events: \033[0m")
@@ -129,8 +130,8 @@ def main(tipo='diario'):
                 Insertar_Datos_BQ(client, Esquema.schema_events, 'tbl_productive_events', events, 'temp', 'WRITE_TRUNCATE')
                 Merge_Data_Events_BQ(
                         client,
-                        'data-warehouse-311917.Productive.tbl_productive_events',
-                        'data-warehouse-311917.zt_productive_temp.tbl_productive_events_temp'
+                        f'{PROJECT_ID}.{DATASET_FINAL}.tbl_productive_events',
+                        f'{PROJECT_ID}.{DATASET_TEMP}.tbl_productive_events_temp'
                         )
         
         print(f"\033[33m Salaries: \033[0m")
@@ -140,8 +141,8 @@ def main(tipo='diario'):
                 Insertar_Datos_BQ(client, Esquema.schema_salaries, 'tbl_productive_salaries', salaries, 'temp', 'WRITE_TRUNCATE')
                 Merge_Data_Salaries_BQ(
                         client,
-                        'data-warehouse-311917.Productive.tbl_productive_salaries',
-                        'data-warehouse-311917.zt_productive_temp.tbl_productive_salaries_temp'
+                        f'{PROJECT_ID}.{DATASET_FINAL}.tbl_productive_salaries',
+                        f'{PROJECT_ID}.{DATASET_TEMP}.tbl_productive_salaries_temp'
                         )
         
         print(f"\033[33m Holiday Calendars: \033[0m")
@@ -151,8 +152,8 @@ def main(tipo='diario'):
                 Insertar_Datos_BQ(client, Esquema.schema_holiday_calendars, 'tbl_productive_holiday_calendars', holiday_calendars, 'temp', 'WRITE_TRUNCATE')
                 Merge_Data_Holiday_Calendars_BQ(
                         client,
-                        'data-warehouse-311917.Productive.tbl_productive_holiday_calendars',
-                        'data-warehouse-311917.zt_productive_temp.tbl_productive_holiday_calendars_temp'
+                        f'{PROJECT_ID}.{DATASET_FINAL}.tbl_productive_holiday_calendars',
+                        f'{PROJECT_ID}.{DATASET_TEMP}.tbl_productive_holiday_calendars_temp'
                         )
         
         
@@ -163,10 +164,10 @@ def main(tipo='diario'):
                 Insertar_Datos_BQ(client, Esquema.schema_holidays, 'tbl_productive_holidays', holidays, 'temp', 'WRITE_TRUNCATE')
                 Merge_Data_Holidays_BQ(
                         client,
-                        'data-warehouse-311917.Productive.tbl_productive_holidays',
-                        'data-warehouse-311917.zt_productive_temp.tbl_productive_holidays_temp'
-                        )
-        """
+                        f'{PROJECT_ID}.{DATASET_FINAL}.tbl_productive_holidays',
+                        f'{PROJECT_ID}.{DATASET_TEMP}.tbl_productive_holidays_temp'
+                )
+        
 
 def ejecutar_tareas():
         hoy = datetime.now(TIMEZONE)
@@ -185,16 +186,16 @@ def ejecutar_tareas():
 
 
 if __name__ == "__main__":
-        # ejecutar_tareas()
-        main('semanal')
-#     try:
-#         schedule.every().day.at("03:00").do(ejecutar_tareas)
-#         print("Esperando la hora programada...")
+        ejecutar_tareas()
+        # main('semanal')
+        # try:
+        #         schedule.every().day.at("03:00").do(ejecutar_tareas)
+        #         print("Esperando la hora programada...")
 
-#         while True:
-#             schedule.run_pending()
-#             time.sleep(60)
+        #         while True:
+        #         schedule.run_pending()
+        #         time.sleep(60)
 
-#     except KeyboardInterrupt:
-#         print("Scheduler detenido manualmente.")
-        
+        # except KeyboardInterrupt:
+        #         print("Scheduler detenido manualmente.")
+                
