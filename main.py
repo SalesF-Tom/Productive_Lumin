@@ -2,8 +2,8 @@ import os
 from dotenv import load_dotenv
 from datetime import datetime
 import pytz
-import schedule
-import time
+# import schedule
+# import time
 from schema.schemas import Esquema
 from funciones.fecha import obtener_fecha_ayer,obtener_lunes_semana_pasada, obtener_primer_dia_mes_pasado
 from funciones.time_reports import get_time_report

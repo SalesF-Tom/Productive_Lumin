@@ -2,6 +2,9 @@ myenv/
 notas.txt
 credenciales/
 auxiliares/
+.vscode/
+run_produccion.sh
+run_produccion.bat
 
 
 # Byte-compiled / optimized / DLL files
